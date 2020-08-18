@@ -15,7 +15,7 @@ class CreateNgosTable extends Migration
     {
         Schema::create('ngos', function (Blueprint $table) {
             $table->id();
-            $table->string('ngo_name')->unique()->default("");
+            $table->string('name')->unique()->default("");
             $table->string('description');
             $table->string('phone');
             $table->string('email')->unique();

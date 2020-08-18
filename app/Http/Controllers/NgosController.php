@@ -34,18 +34,18 @@ class NgosController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'ngo_name' => ['required'],
+        /*$request->validate([
+            'name' => ['required'],
             'description' => ['required'],            
             'phone' => ['required'],
             'email' => ['required', 'email', 'unique:ngos'],
             'password' => ['required', 'min:8'],
             'postalcode' => ['required'],
             'city' => ['required']
-        ]);
+        ]);*/
 
         $ngo = Ngo::create([
-            'ngo_name' => $request->ngo_name,
+            'name' => $request->name,
             'description' => $request->description,            
             'phone' => $request->phone,
             'email' => $request->email,
@@ -108,7 +108,7 @@ class NgosController extends Controller
     {
         Ngo::find($id);
         $request->validate([
-            'ngo_name' => ['required'],
+            'name' => ['required'],
             'description' => ['required'],            
             'phone' => ['required'],
             'email' => ['required', 'email', 'unique:ngos'],
@@ -118,7 +118,7 @@ class NgosController extends Controller
         ]);
 
         $ngo = Ngo::create([
-            'ngo_name' => $request->ngo_name,
+            'name' => $request->name,
             'description' => $requestion->description,            
             'phone' => $request->phone,
             'email' => $request->email,
