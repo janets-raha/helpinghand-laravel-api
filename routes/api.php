@@ -24,9 +24,7 @@ Route::apiResource('/mission', 'MissionsController');
 Route::apiResource('/application', 'ApplicationsController');
 
 Route::get('/register', function() {
-
     return "kiki";
-    
 });
 
 
