@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class UsersController extends Controller
-{
+{   
     /**
      * Display a listing of the resource.
      *
@@ -44,7 +46,7 @@ class UsersController extends Controller
             'postalcode' => $request->postalcode,
             'city' => $request->city
         ]);
-        //return response()->json($user);
+        return response()->json($user);
     }
 
     public function login(Request $request)

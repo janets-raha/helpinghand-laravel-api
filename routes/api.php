@@ -14,14 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+/*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-});
+});*/
+Route::middleware('auth:sanctum')->get('/user', 'RegisterController@user');
 
-Route::apiResource('/user', 'UsersController');
+Route::apiResource('/users', 'UsersController');
 Route::apiResource('/ngo', 'NgosController');
 Route::apiResource('/mission', 'MissionsController');
 Route::apiResource('/application', 'ApplicationsController');
+Route::apiResource('/registeruser', 'RegisterUserController');
+
+
 
 Route::get('/register', function() {
     return "kiki";
