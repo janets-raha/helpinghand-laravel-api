@@ -17,24 +17,22 @@ use Illuminate\Support\Facades\Route;
 /*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });*/
+//
 Route::middleware('auth:sanctum')->get('/user', 'RegisterController@user');
 
-Route::apiResource('/users', 'UsersController');
+
+
+Route::apiResource('/user', 'UsersController');
+
 Route::apiResource('/ngo', 'NgosController');
 Route::apiResource('/mission', 'MissionsController');
 Route::apiResource('/application', 'ApplicationsController');
-Route::apiResource('/registeruser', 'RegisterUserController');
 
-
-
-Route::get('/register', function() {
-    return "kiki";
-});
 
 
 // routes users only
 Route::post('/login', 'UsersController@login');
-Route::post('/register', 'UsersController@create');
+//Route::post('/register', 'UsersController@create');
 
 // routes ngos only
 Route::post('/login-ngo', 'NgosController@login');

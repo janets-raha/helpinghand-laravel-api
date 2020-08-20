@@ -10,6 +10,13 @@ use Illuminate\Validation\ValidationException;
 
 class UsersController extends Controller
 {   
+
+    public function user(Request $request)
+    {
+        //
+        return $request->user();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -74,9 +81,10 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
     public function show($id)
-    {
-       // return User::find($id);
+    {    
+       return User::find($id);
     }
 
     /**
