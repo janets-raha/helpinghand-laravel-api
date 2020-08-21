@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Ngo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class NgosController extends Controller
 {
@@ -53,14 +55,15 @@ class NgosController extends Controller
             'postalcode' => $request->postalcode,
             'city' => $request->city
         ]);
-        //return response()->json($ngo);
+        return response()->json($ngo);
     }
 
     public function login(Request $request)
     {
         $data = $request->validate([
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
+            'device_name' => 'required'
         ]);
     
         $ngo = Ngo::where('email', $request->email)->first();

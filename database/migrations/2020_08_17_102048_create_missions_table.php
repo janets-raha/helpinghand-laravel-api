@@ -22,7 +22,7 @@ class CreateMissionsTable extends Migration
             $table->string('date_time');
             $table->string('postalcode');
             $table->string('city');  
-            $table->foreignId('id_ngo')->constrained('ngos')->default(0);
+            $table->foreignId('id_ngo')->constrained('ngos');
             $table->timestamps();
         });
     }

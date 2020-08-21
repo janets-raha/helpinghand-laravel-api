@@ -26,15 +26,15 @@ class MissionsController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => ['required'],
-            'description' => ['required'],            
-            'skills' => ['required'],
-            'availability' => ['required'],
-            'date_time' => ['required'],
-            'postalcode' => ['required'],
-            'city' => ['required']
-        ]);
+        // $request->validate([
+        //     'title' => ['required'],
+        //     'description' => ['required'],            
+        //     'skills' => ['required'],
+        //     'availability' => ['required'],
+        //     'date_time' => ['required'],
+        //     'postalcode' => ['required'],
+        //     'city' => ['required']
+        // ]);
 
         $mission = Mission::create([
             'title' => $request->title,
@@ -45,7 +45,7 @@ class MissionsController extends Controller
             'postalcode' => $request->postalcode,
             'city' => $request->city
         ]);
-        //return response()->json($mission);
+        return response()->json($mission);
     }
 
     /**

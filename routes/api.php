@@ -32,11 +32,11 @@ Route::apiResource('/application', 'ApplicationsController');
 
 // routes users only
 Route::post('/login', 'UsersController@login');
-//Route::post('/register', 'UsersController@create');
 
 // routes ngos only
 Route::post('/login-ngo', 'NgosController@login');
-Route::post('/register-ngo', 'NgosController@create');
+//Route::post('/createmission', 'MissionsController@create');
+
 
 //Route::get('/register-ngo', 'NgosController@store');
 
