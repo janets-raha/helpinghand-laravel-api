@@ -72,8 +72,14 @@ class UsersController extends Controller
             ]);
         }
     
-        return $user->createToken($request->device_name)->plainTextToken;
+        return [$user->createToken($request->device_name)->plainTextToken, $user->id];
     }
+
+    public function logout(Request $request)
+    {
+        $request->user()->delete();
+    }
+
 
     /**
      * Display the specified resource.
@@ -84,6 +90,7 @@ class UsersController extends Controller
     
     public function show($id)
     {    
+       //return "kiki";
        return User::find($id);
     }
 
@@ -97,14 +104,14 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-        $request->validate([
-            'name' => ['required'],
-            'phone' => ['required'],
-            'email' => ['required', 'email', 'unique:users'],
-            'password' => ['required', 'min:8'],
-            'postalcode' => ['required'],
-            'city' => ['required']
-        ]);
+        // $request->validate([
+        //     'name' => ['required'],
+        //     'phone' => ['required'],
+        //     'email' => ['required', 'email', 'unique:users'],
+        //     'password' => ['required', 'min:8'],
+        //     'postalcode' => ['required'],
+        //     'city' => ['required']
+        // ]);
 
         $user = User::create([
             'name' => $request->name,
@@ -114,7 +121,7 @@ class UsersController extends Controller
             'postalcode' => $request->postalcode,
             'city' => $request->city
         ]);   
-         //   return response()->json($user);
+           return response()->json($user);
     
     }
 

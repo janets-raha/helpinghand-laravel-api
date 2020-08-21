@@ -66,25 +66,38 @@ class NgosController extends Controller
         $ngo = Ngo::where('email', $request->email)->first();
     
         if (!$ngo || !Hash::check($request->password, $ngo->password)) {
-            return response([
-                'message' => ['These credentials do not match our records.']
-            ], 404);
-        } else {
-            return response([
-                'message' => ['registration successful']
-            ], 200);
-            
+            throw ValidationException::withMessages([
+                'email' => ['The provided credentials are incorrect.'],
+            ]);
         }
     
-        $token = $ngo->createToken('my-app-token')->plainTextToken;
+        return [$ngo->createToken($request->device_name)->plainTextToken, $ngo->id];
+        //     return response([
+        //         'message' => ['These credentials do not match our records.']
+        //     ], 404);
+        // } else {
+        //     return response([
+        //         'message' => ['registration successful']
+        //     ], 200);
+            
+        // }
     
-        $response = [
-            'ngo' => $ngo,
-            'token' => $token
-        ];
+        // $token = $ngo->createToken('my-app-token')->plainTextToken;
     
-        return response($response, 201);
+        // $response = [
+        //     'ngo' => $ngo,
+        //     'token' => $token
+        // ];
+    
+        // return response($response, 201);
     }
+
+
+
+    public function logout(Request $request)
+        {
+            $request->user()->delete();
+        }
 
     /**
      * Display the specified resource.
